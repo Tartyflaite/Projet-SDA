@@ -4,7 +4,6 @@ void intialiserConteneurMot(ConteneurMot& c){
     
     c.tab = new Mot[1];
     
-    
 }
 
 void ajouterMot(ConteneurMot& c, Mot& m){
@@ -14,9 +13,11 @@ void ajouterMot(ConteneurMot& c, Mot& m){
         Mot* new_tab = new Mot[c.nbMots+1];
         
         for(unsigned int i = 0 ; i < c.nbMots ; i++){
-            
+
+            if (strcmp(c.tab[i], m) == 0)
+                return;
+
             new_tab[i] = c.tab[i];
-            
             
         }
         
@@ -51,13 +52,13 @@ void lireClavierConteneurMot(ConteneurMot& c) {
 
         std::cin >> buffer;
 
-        if (buffer[0] == '*')
-            break;
-
         
         Mot m = buffer;
 
         ajouterMot(c, m);
+
+        if (*buffer == '*')
+            break;
 
 
     }
@@ -65,36 +66,36 @@ void lireClavierConteneurMot(ConteneurMot& c) {
 
 }
 
-void compterPointsConteneurMot(ConteneurMot& c) {
+void trierConteneurMot(ConteneurMot& c) {
 
-    unsigned int points = 0;
+    while (!estTrie(c)) {
 
-    for (unsigned int i = 0; i < c.nbMots; i++) {
+        for (unsigned int i = 1; i < c.nbMots-1; i++) {
 
-        unsigned int taille = strlen(c.tab[i]);
+            if (estSuperieurOrdreAlphabetique(c.tab[i-1], c.tab[i])) {
 
-        if (taille <= 2)
-            continue;
-
-        if (taille > 2 && taille < 5)
-            points++;
-
-        else {
-
-            switch (taille) {
-
-            case 5: points += 2; break;
-            case 6: points += 3; break;
-            case 7: points += 5; break;
-            default: points += 11; break;
+                Mot temp = c.tab[i];
+                c.tab[i] = c.tab[i-1];
+                c.tab[i-1] = temp;
 
             }
 
         }
-            
 
     }
 
-    std::cout << points;
+}
+
+
+bool estTrie(ConteneurMot& c) {
+
+    for (unsigned int i = 1; i < c.nbMots-1; i++) {
+
+        if (estSuperieurOrdreAlphabetique(c.tab[i-1], c.tab[i]))
+            return false;
+
+    }
+
+    return true;
 
 }

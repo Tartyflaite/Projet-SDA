@@ -9,9 +9,12 @@ int main() {
     intialiserConteneurMot(c);
         
     lireClavierConteneurMot(c);
+
+    trierConteneurMot(c);
     
-    compterPointsConteneurMot(c);
-    
-    
+    afficherConteneurMot(c);
+
+   
+
     
 }

@@ -15,6 +15,7 @@ void intialiserConteneurMot(ConteneurMot&);
 void ajouterMot(ConteneurMot&, Mot&);
 void afficherConteneurMot(ConteneurMot&);
 void lireClavierConteneurMot(ConteneurMot&);
-void compterPointsConteneurMot(ConteneurMot&);
+void trierConteneurMot(ConteneurMot&);
+bool estTrie(ConteneurMot&);
 
 #endif 

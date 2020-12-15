@@ -3,4 +3,6 @@
 
 typedef const char* Mot;
 
+bool estSuperieurOrdreAlphabetique(Mot&, Mot&);
+
 #endif
