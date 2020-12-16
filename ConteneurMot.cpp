@@ -32,7 +32,7 @@ void ajouterMot(ConteneurMot& c, Mot& m){
     
 }
 
-void afficherConteneurMot(ConteneurMot& c){
+void afficherConteneurMot(const ConteneurMot& c){
     
     for(unsigned int i = 0 ; i < c.nbMots ; i++){
         
