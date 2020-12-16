@@ -31,18 +31,6 @@ void ajouterMot(ConteneurMot& c, Mot& m){
     
 }
 
-void afficherConteneurMot(ConteneurMot& c){
-    
-    for(unsigned int i = 0 ; i < c.nbMots ; i++){
-        
-        std::cout << c.tab[i] << std::endl;
-        
-        
-    }
-    
-    
-}
-
 void lireClavierConteneurMot(ConteneurMot& c) {
 
     while (true) {
@@ -51,14 +39,13 @@ void lireClavierConteneurMot(ConteneurMot& c) {
 
         std::cin >> buffer;
 
-        if (buffer[0] == '*')
-            break;
-
         
         Mot m = buffer;
 
         ajouterMot(c, m);
 
+        if (buffer[0] == '*')
+            break;
 
     }
 
@@ -69,7 +56,7 @@ void compterPointsConteneurMot(ConteneurMot& c) {
 
     unsigned int points = 0;
 
-    for (unsigned int i = 0; i < c.nbMots; i++) {
+    for (unsigned int i = 0; i < c.nbMots-1; i++) {
 
         unsigned int taille = strlen(c.tab[i]);
 

@@ -13,7 +13,6 @@ struct ConteneurMot {
 
 void intialiserConteneurMot(ConteneurMot&);
 void ajouterMot(ConteneurMot&, Mot&);
-void afficherConteneurMot(ConteneurMot&);
 void lireClavierConteneurMot(ConteneurMot&);
 void compterPointsConteneurMot(ConteneurMot&);
 
