@@ -13,7 +13,7 @@ struct ConteneurMot {
 
 void intialiserConteneurMot(ConteneurMot&);
 void ajouterMot(ConteneurMot&, Mot&);
-void afficherConteneurMot(ConteneurMot&);
+void afficherConteneurMot(const ConteneurMot&);
 void lireClavierConteneurMot(ConteneurMot&);
 void trierConteneurMot(ConteneurMot&);
 bool estTrie(ConteneurMot&);
