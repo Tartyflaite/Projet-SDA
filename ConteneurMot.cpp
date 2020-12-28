@@ -99,36 +99,33 @@ bool estTrie(ConteneurMot& c) {
 
 }
 
-ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2) {
+bool motPresentdansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2, unsigned int i) {
+    
+    for (unsigned int j = 0; j < liste1.nbMots - 1; j++) {
+
+
+        if (strcmp(liste2.tab[i], liste1.tab[j]) == 0) {
+
+            return true;
+
+        }
+
+
+    }
+    return false;
+}
+
+ConteneurMot motsAbsentsDansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2) {
 
     ConteneurMot resultat;
 
     intialiserConteneurMot(resultat);
 
-    bool present;
-
     for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
 
-        present = false;
 
-        for (unsigned int j = 0; j < liste1.nbMots - 1; j++) {
-
-            
-            if (strcmp(liste2.tab[i], liste1.tab[j]) == 0) {
-
-                present = true;
-
-            }
-            
-
-        }
-
-
-        if (!present)
+        if (!motPresentdansSecondConteneurMot(liste1, liste2, i))
             ajouterMot(resultat, liste2.tab[i]);
-
-     
-
 
     }
 
@@ -138,4 +135,59 @@ ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, cons
 
     return resultat;
 
+}
+
+ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2) {
+
+    ConteneurMot resultat;
+
+    intialiserConteneurMot(resultat);
+
+    for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
+
+
+        if (motPresentdansSecondConteneurMot(liste1, liste2, i))
+            ajouterMot(resultat, liste2.tab[i]);
+
+    }
+
+    Mot end = "*";
+
+    ajouterMot(resultat, end);
+
+    return resultat;
+
+}
+
+ConteneurMot rechercheDicotomique(const ConteneurMot& liste1, const ConteneurMot& liste2) {
+    ConteneurMot resultat;
+    unsigned int max = liste1.nbMots-1,min=0,mid;
+
+    intialiserConteneurMot(resultat);
+    
+    for (unsigned int i = 0; i < liste2.nbMots-1; ++i) {
+        max = liste1.nbMots - 1;
+        min = 0;
+
+        while (min <= max) {
+            mid = (min + max) / 2;
+
+            if (strcmp(liste2.tab[i], liste1.tab[mid]) == 0) {
+                ajouterMot(resultat, liste2.tab[i]);
+                break;
+            }
+
+            if (strcmp(liste2.tab[i], liste1.tab[mid]) < 0) {
+                max = mid-1;
+            }
+            else {
+                min = mid+1;
+            }
+        }
+    }
+    Mot end = "*";
+
+    ajouterMot(resultat, end);
+
+    return resultat;
 }

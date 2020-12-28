@@ -16,7 +16,7 @@ int main() {
     trierConteneurMot(liste1);
     trierConteneurMot(liste2);
 
-    afficherConteneurMot(motsPresentsDansSecondConteneurMot(liste1, liste2));
+    afficherConteneurMot(rechercheDicotomique(liste1, liste2));
   
     
 }
