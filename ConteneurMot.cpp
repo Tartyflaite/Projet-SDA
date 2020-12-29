@@ -99,7 +99,7 @@ bool estTrie(ConteneurMot& c) {
 
 }
 
-ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2) {
+ConteneurMot motsAbsentsDansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2) {
 
     ConteneurMot resultat;
 
