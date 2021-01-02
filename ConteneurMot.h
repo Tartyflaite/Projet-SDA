@@ -17,7 +17,7 @@ void afficherConteneurMot(const ConteneurMot&);
 void lireClavierConteneurMot(ConteneurMot&);
 void trierConteneurMot(ConteneurMot&);
 bool estTrie(ConteneurMot&);
-bool motPresentdansSecondConteneurMot(const ConteneurMot&, const ConteneurMot&, unsigned int);
+bool motPresentdansConteneurMot(const Mot&, const ConteneurMot&);
 ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot&, const ConteneurMot&);
 ConteneurMot motsAbsentDansSecondConteneurMot(const ConteneurMot&, const ConteneurMot&);
 ConteneurMot rechercheDicotomique(const ConteneurMot&, const ConteneurMot&);

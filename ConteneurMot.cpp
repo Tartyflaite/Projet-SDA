@@ -99,12 +99,12 @@ bool estTrie(ConteneurMot& c) {
 
 }
 
-bool motPresentdansSecondConteneurMot(const ConteneurMot& liste1, const ConteneurMot& liste2, unsigned int i) {
+bool motPresentdansConteneurMot(const Mot& mot, const ConteneurMot& liste) {
     
-    for (unsigned int j = 0; j < liste1.nbMots - 1; j++) {
+    for (unsigned int j = 0; j < liste.nbMots - 1; j++) {
 
 
-        if (strcmp(liste2.tab[i], liste1.tab[j]) == 0) {
+        if (strcmp(mot, liste.tab[j]) == 0) {
 
             return true;
 
@@ -124,7 +124,7 @@ ConteneurMot motsAbsentsDansSecondConteneurMot(const ConteneurMot& liste1, const
     for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
 
 
-        if (!motPresentdansSecondConteneurMot(liste1, liste2, i))
+        if (!motPresentdansConteneurMot(liste2.tab[i],liste1))
             ajouterMot(resultat, liste2.tab[i]);
 
     }
@@ -146,7 +146,7 @@ ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, cons
     for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
 
 
-        if (motPresentdansSecondConteneurMot(liste1, liste2, i))
+        if (motPresentdansConteneurMot(liste2.tab[i], liste1))
             ajouterMot(resultat, liste2.tab[i]);
 
     }
