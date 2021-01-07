@@ -156,7 +156,7 @@ ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, cons
 
 ConteneurMot rechercheDichotomique(ConteneurMot& liste1, ConteneurMot& liste2) {
     ConteneurMot resultat;
-    unsigned int max,min,mid;
+    int max,min,mid;
 
 
     if (!estTrie(liste1))
@@ -165,7 +165,7 @@ ConteneurMot rechercheDichotomique(ConteneurMot& liste1, ConteneurMot& liste2) {
     intialiserConteneurMot(resultat);
     
     for (unsigned int i = 0; i < liste2.nbMots ; i++) {
-        max = liste1.nbMots;
+        max = liste1.nbMots-1;
         min = 0;
 
         while (min <= max) {

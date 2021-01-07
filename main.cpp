@@ -7,7 +7,6 @@
 int main() {
     
    
-
     ListeConteneurMot liste;
     
     initialiserListeConteneurMot(liste);
@@ -15,7 +14,6 @@ int main() {
     lireClavierListeConteneurMot(liste);
 
     afficherConteneurMot(MotsPresentsDansMinDeuxConteneurs(liste));
-
 
 
     

@@ -94,7 +94,7 @@ ConteneurMot MotsPresentsDansMinDeuxConteneurs(ListeConteneurMot& l) {
             if (j == i)
                 continue;
 
-            temp = motsPresentsDansSecondConteneurMot(l.tab[j],l.tab[i]);
+            temp = rechercheDichotomique(l.tab[j],l.tab[i]);
             
             for (unsigned int k = 0; k < temp.nbMots ; k++) {
 
