@@ -40,6 +40,8 @@ void afficherConteneurMot(const ConteneurMot& c){
         
         
     }
+
+    std::cout << '*' << std::endl;
     
     
 }
@@ -51,13 +53,14 @@ void lireClavierConteneurMot(ConteneurMot& c) {
         char* buffer = new char[30];
 
         std::cin >> buffer;
+
+        if (*buffer == '*')
+            break;
         
         Mot m = buffer;
 
         ajouterMot(c, m);
 
-        if (*buffer == '*')
-            break;
 
 
     }
@@ -69,7 +72,7 @@ void trierConteneurMot(ConteneurMot& c) {
 
     while (!estTrie(c)) {
 
-        for (unsigned int i = 1; i < c.nbMots-1; i++) {
+        for (unsigned int i = 1; i < c.nbMots; i++) {
 
             if (estSuperieurOrdreAlphabetique(c.tab[i-1], c.tab[i])) {
 
@@ -86,9 +89,9 @@ void trierConteneurMot(ConteneurMot& c) {
 }
 
 
-bool estTrie(ConteneurMot& c) {
+bool estTrie(const ConteneurMot& c) {
 
-    for (unsigned int i = 1; i < c.nbMots-1; i++) {
+    for (unsigned int i = 1; i < c.nbMots; i++) {
 
         if (estSuperieurOrdreAlphabetique(c.tab[i-1], c.tab[i]))
             return false;
@@ -101,7 +104,7 @@ bool estTrie(ConteneurMot& c) {
 
 bool motPresentdansConteneurMot(const Mot& mot, const ConteneurMot& liste) {
     
-    for (unsigned int j = 0; j < liste.nbMots - 1; j++) {
+    for (unsigned int j = 0; j < liste.nbMots; j++) {
 
 
         if (strcmp(mot, liste.tab[j]) == 0) {
@@ -121,17 +124,13 @@ ConteneurMot motsAbsentsDansSecondConteneurMot(const ConteneurMot& liste1, const
 
     intialiserConteneurMot(resultat);
 
-    for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
+    for (unsigned int i = 0; i < liste2.nbMots; i++) {
 
 
         if (!motPresentdansConteneurMot(liste2.tab[i],liste1))
             ajouterMot(resultat, liste2.tab[i]);
 
     }
-
-    Mot end = "*";
-
-    ajouterMot(resultat, end);
 
     return resultat;
 
@@ -143,7 +142,7 @@ ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, cons
 
     intialiserConteneurMot(resultat);
 
-    for (unsigned int i = 0; i < liste2.nbMots - 1; i++) {
+    for (unsigned int i = 0; i < liste2.nbMots ; i++) {
 
 
         if (motPresentdansConteneurMot(liste2.tab[i], liste1))
@@ -151,22 +150,22 @@ ConteneurMot motsPresentsDansSecondConteneurMot(const ConteneurMot& liste1, cons
 
     }
 
-    Mot end = "*";
-
-    ajouterMot(resultat, end);
-
     return resultat;
 
 }
 
-ConteneurMot rechercheDicotomique(const ConteneurMot& liste1, const ConteneurMot& liste2) {
+ConteneurMot rechercheDichotomique(ConteneurMot& liste1, ConteneurMot& liste2) {
     ConteneurMot resultat;
-    unsigned int max = liste1.nbMots-1,min=0,mid;
+    unsigned int max,min,mid;
 
+
+    if (!estTrie(liste1))
+        trierConteneurMot(liste1);    
+    
     intialiserConteneurMot(resultat);
     
-    for (unsigned int i = 0; i < liste2.nbMots-1; ++i) {
-        max = liste1.nbMots - 1;
+    for (unsigned int i = 0; i < liste2.nbMots ; i++) {
+        max = liste1.nbMots;
         min = 0;
 
         while (min <= max) {
@@ -185,9 +184,42 @@ ConteneurMot rechercheDicotomique(const ConteneurMot& liste1, const ConteneurMot
             }
         }
     }
-    Mot end = "*";
 
-    ajouterMot(resultat, end);
+    trierConteneurMot(resultat);
 
     return resultat;
+}
+
+void compterPointsConteneurMot(const ConteneurMot& c) {
+
+    unsigned int points = 0;
+
+    for (unsigned int i = 0; i < c.nbMots; i++) {
+
+        unsigned int taille = strlen(c.tab[i]);
+
+        if (taille <= 2)
+            continue;
+
+        if (taille > 2 && taille < 5)
+            points++;
+
+        else {
+
+            switch (taille) {
+
+            case 5: points += 2; break;
+            case 6: points += 3; break;
+            case 7: points += 5; break;
+            default: points += 11; break;
+
+            }
+
+        }
+
+
+    }
+
+    std::cout << points;
+
 }

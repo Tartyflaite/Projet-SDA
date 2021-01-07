@@ -1,22 +1,22 @@
 #include <iostream>
 
 #include "ConteneurMot.h"
+#include "ListeConteneurMot.h"
+
 
 int main() {
     
-    ConteneurMot liste1;
-    ConteneurMot liste2;
+   
+
+    ListeConteneurMot liste;
     
-    intialiserConteneurMot(liste1);
-    intialiserConteneurMot(liste2);
-        
-    lireClavierConteneurMot(liste1);
-    lireClavierConteneurMot(liste2);
+    initialiserListeConteneurMot(liste);
 
-    trierConteneurMot(liste1);
-    trierConteneurMot(liste2);
+    lireClavierListeConteneurMot(liste);
 
-    afficherConteneurMot(rechercheDicotomique(liste1, liste2));
-  
+    afficherConteneurMot(MotsPresentsDansMinDeuxConteneurs(liste));
+
+
+
     
 }

@@ -10,10 +10,11 @@ struct ListeConteneurMot {
 	ConteneurMot* tab;
 	unsigned int nbConteneurs = 0;
 };
+
 void initialiserListeConteneurMot(ListeConteneurMot&);
 void ajouterConteneurMot(ListeConteneurMot&, ConteneurMot&);
 void afficherListeConteneurMot(const ListeConteneurMot&);
-void lireClavierListeConteneurMot(ConteneurMot&);
+void lireClavierListeConteneurMot(ListeConteneurMot&);
 void trierListeConteneurMots(ListeConteneurMot&);
 ConteneurMot MotsPresentsDansMinDeuxConteneurs(ListeConteneurMot&);
 #endif 
