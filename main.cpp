@@ -1,8 +1,6 @@
 #include <iostream>
-
-#include "ConteneurMot.h"
 #include "ListeConteneurMot.h"
-#include "Plateau.h"
+
 
 /*
 [brief] : Fonction correspondant à l'exécution du sprint 1

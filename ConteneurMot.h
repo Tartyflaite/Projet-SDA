@@ -1,7 +1,7 @@
 #ifndef ConteneurMot_h
 #define ConteneurMot_h
 
-#include "Mot.h"
+
 #include "Plateau.h"
 #include <iostream>
 
